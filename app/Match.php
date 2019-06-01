@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Match extends Model
 {
+   protected $fillable = [
+        'dateMatch','id_teamA','id_teamB'
+   ];
+
     public function teamA()
     {
         return $this->hasOne(Team::class, "id", "id_teamA");
