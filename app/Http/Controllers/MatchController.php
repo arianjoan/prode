@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Match;
+use App\Match as Match;
+use App\Team as Team;
 use Illuminate\Http\Request;
 
 class MatchController extends Controller
@@ -26,7 +27,8 @@ class MatchController extends Controller
      */
     public function create()
     {
-        return view("matches.create");
+        $teams = Team::all();
+        return view("matches.create",compact('teams'));
     }
 
     /**
@@ -37,11 +39,20 @@ class MatchController extends Controller
      */
     public function store(Request $request)
     {
+
+
         Match::create(
-            request()->validate([
-                
-            ])
-            );
+            request()->validate(
+                [
+                    'id_teamA' => ['required'],
+                    'id_teamB' => ['required'],
+                    'dateMatch' => ['required']
+                ]
+            )
+            
+        );
+
+        return $this->index();
     }
 
     /**

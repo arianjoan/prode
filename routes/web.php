@@ -15,5 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/','HomeController');
 Route::resource('team', 'TeamController');
 Route::resource('match', 'MatchController');

@@ -12,11 +12,11 @@ class Team extends Model
 
     public function matchA()
     {
-        return $this->belongsTo(Match::class, "id", "id_teamA");
+        return $this->belongsToMany(Match::class, "id", "id_teamA");
     }
 
     public function matchB()
     {
-        return $this->belongsTo(Match::class, "id", "id_teamB");
+        return $this->belongsToMany(Match::class, "id", "id_teamB");
     }
 }

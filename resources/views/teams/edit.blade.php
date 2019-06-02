@@ -1,6 +1,6 @@
-@extends('layout')
+@extends('index')
 
-@section('body')
+@section('indexSection')
 
 <h1>Edit Team: {{ $team->nameTeam }}</h1>
 

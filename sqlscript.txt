@@ -1,0 +1,14 @@
+INSERT INTO TEAMS (nameteam,created_at,updated_at) values 
+("Argentina",now(),now()),
+("Bolivia",now(),now()),
+("Brasil",now(),now()),
+("Catar",now(),now()),
+("Chile",now(),now()),
+("Colombia",now(),now()),
+("Ecuador",now(),now()),
+("Japon",now(),now()),
+("Paraguay",now(),now()),
+("Peru",now(),now()),
+("Uruguay",now(),now()),
+("Venezuela",now(),now());
+
