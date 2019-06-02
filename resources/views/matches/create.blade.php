@@ -1,6 +1,6 @@
-@extends('layout')
+@extends('index')
 
-@section('body')
+@section('indexSection')
 
 <form action="/match" method="POST">
 @csrf

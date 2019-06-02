@@ -1,12 +1,19 @@
-@extends('layout')
-
-@section('body')
-
-@foreach ($teams as $team)
-    
-    <h1><a href="team/{{ $team->id }}">{{ $team->nameTeam }}</a></h1>
-    
-@endforeach
-
-<a href="team/create">Create Team</a>
+@extends('index')
+@section('indexSection')
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+    @foreach($teams as $team)
+      <tr>
+        <th scope="row">{{$team->id}}</th>
+        <td>{{$team->nameTeam}}</td>
+      </tr>
+    @endforeach
+    </tbody>
+  </table>
 @endsection()
