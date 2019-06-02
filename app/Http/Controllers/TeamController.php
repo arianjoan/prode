@@ -45,7 +45,7 @@ class TeamController extends Controller
             )
         );
 
-        return redirect('/team');
+        return $this->index();
     }
 
     /**
@@ -81,7 +81,7 @@ class TeamController extends Controller
     {
         $team->update(request(['nameTeam']));
 
-        return redirect('/team');
+        return $this->index();
     }
 
     /**
@@ -94,6 +94,6 @@ class TeamController extends Controller
     {
         $team->delete();
 
-        return redirect ('/team');
+        return $this->index();
     }
 }

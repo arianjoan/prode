@@ -5,7 +5,7 @@
 <h1>Edit Team: {{ $team->nameTeam }}</h1>
 
     <form action="/team/{{ $team->id }}" method="post">
-        {{ csrf_field() }}
+        @csrf
         @method('PATCH')
 
         <input type="text" name="nameTeam" value="{{ $team->nameTeam }}">

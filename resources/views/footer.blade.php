@@ -3,7 +3,7 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2019 Copyright:
-      <a href="127.0.0.1:8000"> arianproven@gmail.com</a>
+      <a href="127.0.0.1:8000"> Justo, vos solo y tu mail, chupala</a>
     </div>
     <!-- Copyright -->
   

@@ -14,7 +14,9 @@ class FixtureController extends Controller
      */
     public function index()
     {
-        //
+        $fixtures = Fixture::all();
+
+        return view('fixtures.index', compact('fixtures'));
     }
 
     /**
@@ -24,7 +26,7 @@ class FixtureController extends Controller
      */
     public function create()
     {
-        //
+        return view('fixtures.create');
     }
 
     /**
@@ -35,7 +37,14 @@ class FixtureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //example of param1
+        Fixture::create(
+            $request()->validate([
+                'param1' => ['required']
+            ])
+        );
+
+        return $this->index();
     }
 
     /**
@@ -46,7 +55,7 @@ class FixtureController extends Controller
      */
     public function show(Fixture $fixture)
     {
-        //
+        return view('fixtures.show', compact('fixture'));
     }
 
     /**
@@ -57,7 +66,7 @@ class FixtureController extends Controller
      */
     public function edit(Fixture $fixture)
     {
-        //
+        return view('fixtures.edit', compact('fixture'));
     }
 
     /**
@@ -69,7 +78,10 @@ class FixtureController extends Controller
      */
     public function update(Request $request, Fixture $fixture)
     {
-        //
+        //example of param1
+        $fixture->update(request(['param1']));
+
+        return $this->index();
     }
 
     /**
@@ -80,6 +92,8 @@ class FixtureController extends Controller
      */
     public function destroy(Fixture $fixture)
     {
-        //
+        $fixture->delete();
+
+        return $this->index();
     }
 }

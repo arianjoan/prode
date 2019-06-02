@@ -3,7 +3,7 @@
 @section('indexSection')
 
     <form action="/team" method="post">
-    {{ csrf_field() }}
+    @csrf
 
         <div class="field">
             <label for="nameTeam" class="label">Team name</label>
@@ -30,7 +30,5 @@
         @endif
 
     </form>
-
-    bulmafield
 
 @endsection
