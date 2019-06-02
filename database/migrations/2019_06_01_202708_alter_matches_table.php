@@ -15,6 +15,7 @@ class AlterMatchesTable extends Migration
     {
         Schema::table('matches', function (Blueprint $table) {
             $table->datetime('dateMatch')->default('2000-01-01 00:00:00');
+            $table->string('name', 2);
         });
     }
 
@@ -27,6 +28,7 @@ class AlterMatchesTable extends Migration
     {
         Schema::table('matches', function (Blueprint $table) {
             $table->dropColumn('dateMatch');
+            $table->dropColumn('group');
         });
     }
 }
