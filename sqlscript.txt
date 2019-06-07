@@ -1,6 +1,6 @@
 INSERT INTO TEAMS (nameteam,created_at,updated_at) values 
-("Argentina",now(),now()),
-("Bolivia",now(),now()),
+("Argentina",now(),now()), 
+("Bolivia",now(),now()), 
 ("Brasil",now(),now()),
 ("Catar",now(),now()),
 ("Chile",now(),now()),
@@ -12,3 +12,22 @@ INSERT INTO TEAMS (nameteam,created_at,updated_at) values
 ("Uruguay",now(),now()),
 ("Venezuela",now(),now());
 
+INSERT INTO MATCHES (ID_teamA,ID_teamB,created_at,updated_at,dateMatch,name) values
+(3,2,now(),now(),"2019-06-14 21:30:00","A"),
+(12,10,now(),now(),"2019-06-15 16:00:00","A"),
+(1,7,now(),now(),"2019-06-15 19:00:00","B"),
+(9,4,now(),now(),"2019-06-16 16:00:00","B"),
+(11,8,now(),now(),"2019-06-16 19:00:00","C"),
+(8,5,now(),now(),"2019-06-17 20:00:00","C"),
+(2,10,now(),now(),"2019-06-18 18:30:00","A"),
+(3,12,now(),now(),"2019-06-18 21:30:00","A"),
+(6,4,now(),now(),"2019-06-19 18:30:00","B"),
+(1,9,now(),now(),"2019-06-19 21:30:00","B"),
+(11,8,now(),now(),"2019-06-20 20:00:00","C"),
+(7,5,now(),now(),"2019-06-21 20:00:00","C"),
+(2,12,now(),now(),"2019-06-22 16:00:00","A"),
+(10,3,now(),now(),"2019-06-22 16:00:00","A"),
+(4,1,now(),now(),"2019-06-23 16:00:00","B"),
+(6,9,now(),now(),"2019-06-23 16:00:00","B"),
+(5,11,now(),now(),"2019-06-24 20:00:00","C"),
+(7,8,now(),now(),"2019-06-24 20:00:00","C");
