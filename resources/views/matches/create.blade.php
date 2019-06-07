@@ -6,6 +6,14 @@
 @csrf
 
     <div class="field">
+        <label for="name" class="field">Grupo:</label>
+        <div class="control">
+            <input type="text" class="input" name="name" maxlength="2">
+        </div>
+        
+    </div>
+
+    <div class="field">
         <label class="label" for="teamA">Team Name A</label>
 
         <div class="control">
@@ -38,6 +46,6 @@
     <div class="button">
         <button type="submit">Create Match</button>
     </div>
-
-
 </form> 
+
+@endsection

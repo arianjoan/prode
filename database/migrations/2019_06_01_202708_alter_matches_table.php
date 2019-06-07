@@ -28,7 +28,7 @@ class AlterMatchesTable extends Migration
     {
         Schema::table('matches', function (Blueprint $table) {
             $table->dropColumn('dateMatch');
-            $table->dropColumn('group');
+            $table->dropColumn('name');
         });
     }
 }
