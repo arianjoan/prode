@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/','HomeController');
+Route::resource('/','ProdeController');
 Route::resource('team', 'TeamController');
 Route::resource('match', 'MatchController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
