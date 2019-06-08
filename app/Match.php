@@ -19,4 +19,8 @@ class Match extends Model
     {
         return $this->hasOne(Team::class, "id", "id_teamB");
     }
+
+    public function scopeName($query,$name){
+        $query->where('name', $name);
+    }
 }
