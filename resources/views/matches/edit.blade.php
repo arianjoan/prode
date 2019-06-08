@@ -2,9 +2,9 @@
 
 @section('indexSection')
 
-<h1>Edit Match: {{ $match->teamA }} vs {{ $match->teamB }}</h1>
+<h1>Edit Match: {{ $match->teamA->nameTeam }} vs {{ $match->teamB->nameTeam }}</h1>
 
-    <form action="/team/{{ $match->id }}" method="post">
+    <form action="/match/{{ $match->id }}" method="post">
         @csrf
         @method('PATCH')
 
@@ -21,8 +21,20 @@
 
             <div class="control">
                 <select name="id_teamA">
-                    @foreach ($match as $match)
-                        <option value="{{ $team->id }}" @if($match->id)> {{ $team->nameTeam }} </option>
+                    @foreach($teams as $team)
+                        <option value="{{ $team->id }}" {{ $team->id == $match->teamA->id ? 'selected' : '' }}> {{ $team->nameTeam }} </option>
+                    @endforeach                
+                </select>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="teamB" class="field">Equipo B:</label>
+
+            <div class="control">
+                <select name="id_teamB">
+                    @foreach($teams as $team)
+                        <option value="{{ $team->id }}" {{ $team->id == $match->teamB->id ? 'selected' : '' }}> {{ $team->nameTeam }} </option>
                     @endforeach                
                 </select>
             </div>

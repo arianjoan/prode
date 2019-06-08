@@ -39,26 +39,18 @@ class MatchController extends Controller
      */
     public function store(Request $request)
     {
-        /*Match::create(
+        Match::create(
             request()->validate(
                 [
                     'name' => ['required' ,'max : 2', 'min : 1'],
                     'id_teamA' => ['required'],
                     'id_teamB' => ['required'],
-                    'dateMatch' => ['required']
-                    
+                    'dateMatch' => ['required'] 
                 ]
             )            
-        );*/
-        $match = new Match();
-        $match->name = $request->name;
-        $match->id_teamA = $request->id_teamA;
-        $match->id_teamB = $request->id_teamB;
-        $match->dateMatch = $request->dateMatch;
-
-        dd($match);
+        ); 
         
-        //return $this->index();
+        return $this->index();
     }
 
     /**
@@ -80,7 +72,9 @@ class MatchController extends Controller
      */
     public function edit(Match $match)
     {
-        return view("matches.edit", compact("match"));
+        $teams = Team::all();
+
+        return view("matches.edit", compact("match", "teams"));
     }
 
     /**
@@ -92,7 +86,9 @@ class MatchController extends Controller
      */
     public function update(Request $request, Match $match)
     {
-        
+        $match->update(request(['name', 'id_teamA', 'id_teamB']));
+  
+        return $this->index();
     }
 
     /**
