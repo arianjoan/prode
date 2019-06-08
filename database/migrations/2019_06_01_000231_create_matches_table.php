@@ -17,6 +17,8 @@ class CreateMatchesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('id_teamA')->unsigned();
             $table->bigInteger('id_teamB')->unsigned();
+            $table->datetime('dateMatch')->default('2000-01-01 00:00:00');
+            $table->string('name', 2);
             $table->timestamps();
         });
 
