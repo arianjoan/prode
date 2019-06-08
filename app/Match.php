@@ -20,6 +20,11 @@ class Match extends Model
         return $this->hasOne(Team::class, "id", "id_teamB");
     }
 
+    public function results()
+    {
+        return $this->belongsToMany(Result::class, 'id', 'id_match');
+    }
+
     public function scopeName($query,$name){
        return  $query->where('name','=', $name);
     }

@@ -15,11 +15,14 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_match');
-            $table->integer('id_fixture');
-            $table->integer('scoreA');
-            $table->integer('scoreB');
+            $table->bigInteger('id_match')->unsigned();
+            $table->bigInteger('id_fixture')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('results', function (Blueprint $table) {
+            $table->foreign('id_match')->references('id')->on('matches');
+            $table->foreign('id_fixture')->references('id')->on('fixtures');
         });
     }
 
