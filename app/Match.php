@@ -21,6 +21,6 @@ class Match extends Model
     }
 
     public function scopeName($query,$name){
-        $query->where('name', $name);
+       return  $query->where('name','=', $name);
     }
 }
