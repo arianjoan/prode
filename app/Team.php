@@ -22,11 +22,11 @@ class Team extends Model
 
     public function StatA()
     {
-        return $this->belongsTo(Stat::class, 'id', 'id_teamA');
+        return $this->belongsToMany(Stat::class, 'id', 'id_teamA');
     }
 
     public function StatB()
     {
-        return $this->belongsTo(Stat::class, 'id', 'id_teamB');
+        return $this->belongsToMany(Stat::class, 'id', 'id_teamB');
     }
 }
