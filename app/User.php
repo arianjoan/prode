@@ -39,6 +39,6 @@ class User extends Authenticatable
 
     public function fixture()
     {
-        return $this->belongsTo(Fixture::class, 'id', 'id_user');
+        return $this->hasMany(Fixture::class, 'id_user');
     }
 }

@@ -8,7 +8,7 @@ class Result extends Model
 {
     public function stat()
     {
-        return $this->hasOne(Stat::class, 'id_result');
+        return $this->hasMany(Stat::class, 'id_result');
     }
 
     public function match()
