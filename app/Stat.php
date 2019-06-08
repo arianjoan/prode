@@ -18,6 +18,6 @@ class Stat extends Model
 
     public function result()
     {
-        return $this->hasOne(Result::class, "id", "id_result");
+        return $this->belongsTo(Result::class, "id", "id_result");
     }
 }

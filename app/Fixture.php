@@ -2,12 +2,13 @@
 
 namespace App;
 
+use App\Result as Result;
 use Illuminate\Database\Eloquent\Model;
 
 class Fixture extends Model
 {
-    public function results()
+    public function result()
     {
-        return $this->belongsToMany(Result::class, 'id', 'id_fixture');
+    return $this->hasMany(Result::class, 'id_fixture');
     }
 }

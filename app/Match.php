@@ -12,17 +12,17 @@ class Match extends Model
 
     public function teamA()
     {
-        return $this->hasOne(Team::class, "id", "id_teamA");
+        return $this->belongsTo(Team::class, "id_teamA");
     }
 
     public function teamB()
     {
-        return $this->hasOne(Team::class, "id", "id_teamB");
+        return $this->belongsTo(Team::class, "id_teamB");
     }
 
     public function results()
     {
-        return $this->belongsToMany(Result::class, 'id', 'id_match');
+        return $this->hasMany(Result::class, 'id_match');
     }
 
     public function scopeName($query,$name){

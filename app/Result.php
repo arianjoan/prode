@@ -8,16 +8,16 @@ class Result extends Model
 {
     public function stat()
     {
-        return $this->belongsTo(Stat::class, 'id', 'id_result');
+        return $this->hasOne(Stat::class, 'id_result');
     }
 
     public function match()
     {
-        return $this->hasOne(Match::class, 'id', 'id_match');
+        return $this->belongsTo(Match::class, 'id_match');
     }
 
     public function fixture()
     {
-        return $this->hasOne(Fixture::class, 'id', 'id_fixture');
+    return $this->belongsTo(Fixture::class, 'id_fixture');
     }
 }
