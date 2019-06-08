@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Result extends Model
 {
-    public function result()
+    public function stat()
     {
         return $this->belongsTo(Stat::class, 'id', 'id_result');
     }
