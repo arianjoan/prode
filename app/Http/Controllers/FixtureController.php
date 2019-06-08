@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Fixture;
+use App\Fixture as Fixture;
 use Illuminate\Http\Request;
 
 class FixtureController extends Controller
@@ -14,9 +14,21 @@ class FixtureController extends Controller
      */
     public function index()
     {
-        $fixtures = Fixture::all();
+        $fixture = Fixture::idUser(auth()->user()->id)->get();
+        if (count($fixture) != 0){
+            $fixture = auth()->user()->fixture;
+            return view('fixtures.index', compact('fixture'));
+        }else{
+            $this->addFixture();
+        }
+        
+    }
 
-        return view('fixtures.index', compact('fixtures'));
+    private function addFixture(){
+        $fixture = new Fixture();
+        $fixture->id_User = auth()->user()->id;
+        $fixture->score = 0;
+        $this->store($fixture);
     }
 
     /**
@@ -35,14 +47,9 @@ class FixtureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Fixture $fixture)
     {
-        //example of param1
-        Fixture::create(
-            $request()->validate([
-                'param1' => ['required']
-            ])
-        );
+        $fixture->save();
 
         return $this->index();
     }
@@ -53,9 +60,9 @@ class FixtureController extends Controller
      * @param  \App\Fixture  $fixture
      * @return \Illuminate\Http\Response
      */
-    public function show(Fixture $fixture)
+    public function show()
     {
-        return view('fixtures.show', compact('fixture'));
+        
     }
 
     /**
