@@ -15,9 +15,9 @@ class MatchController extends Controller
      */
     public function index()
     {
-        /*$matches = Match::all();
+        $matches = Match::all();
 
-        return view('matches.index', compact('matches'));*/
+        return view('matches.index', compact('matches'));
 
         $matches = Match::name("A")->get();
         dd($matches);

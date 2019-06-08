@@ -16,8 +16,9 @@ Route::get('/', function () {
 });
 
 Route::resource('/','ProdeController');
-Route::resource('team', 'TeamController');
-Route::resource('match', 'MatchController');
+Route::resource('team','TeamController');
+Route::resource('match','MatchController');
+Route::resource('fixture','FixtureController');
 
 Auth::routes();
 

@@ -32,6 +32,11 @@
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
+            @Auth
+            <li class="nav-item active">
+              <a class="nav-link" href="{{action('FixtureController@index')}}">Mi Fixture <span class="sr-only">(current)</span></a>
+            </li>
+            @endauth
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
