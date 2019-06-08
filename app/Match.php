@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Match extends Model
 {
    protected $fillable = [
-        'dateMatch','id_teamA','id_teamB', 'name' 
+        'dateMatch','id_teamA','id_teamB', 'name'
    ];
 
     public function teamA()

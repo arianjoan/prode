@@ -19,4 +19,14 @@ class Team extends Model
     {
         return $this->belongsToMany(Match::class, "id", "id_teamB");
     }
+
+    public function resultsA()
+    {
+        return $this->belongsTo(Result::class, 'id', 'id_teamA');
+    }
+
+    public function resultsB()
+    {
+        return $this->belongsTo(Result::class, 'id', 'id_teamB');
+    }
 }
