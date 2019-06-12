@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Fixture as Fixture;
+use App\Match as Match;
+use App\Result as Result;
 use Illuminate\Http\Request;
 
 class FixtureController extends Controller
@@ -28,7 +30,19 @@ class FixtureController extends Controller
         $fixture = new Fixture();
         $fixture->id_User = auth()->user()->id;
         $fixture->score = 0;
-        $this->store($fixture);
+        $fixture->save();
+
+        $fixture = Fixture::idUser(auth()->user()->id)->get()->first();
+        $matches = Match::all();
+
+        foreach($matches as $match){
+            $result = new Result();
+            $result->id_match = $match->id;
+            $result->id_fixture = $fixture->id;
+            $result->save();
+        }
+
+        $fixture->save();
     }
 
     /**
@@ -50,7 +64,6 @@ class FixtureController extends Controller
     public function store(Fixture $fixture)
     {
         $fixture->save();
-
         return $this->index();
     }
 
