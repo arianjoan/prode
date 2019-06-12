@@ -6,11 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Result extends Model
 {
-    public function stat()
-    {
-        return $this->hasMany(Stat::class, 'id_result');
-    }
-
     public function match()
     {
         return $this->belongsTo(Match::class, 'id_match');
@@ -19,5 +14,15 @@ class Result extends Model
     public function fixture()
     {
     return $this->belongsTo(Fixture::class, 'id_fixture');
+    }
+
+    public function teamA()
+    {
+        return $this->belongsTo(Team::class, 'id_teamA');
+    }
+
+    public function teamB()
+    {
+        return $this->belongsTo(Team::class, 'id_teamB');
     }
 }

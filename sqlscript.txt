@@ -1,5 +1,5 @@
 INSERT INTO TEAMS (nameteam,created_at,updated_at) values 
-("Argentina",now(),now()), 
+("Argentina",now(),now()),
 ("Bolivia",now(),now()), 
 ("Brasil",now(),now()),
 ("Catar",now(),now()),
