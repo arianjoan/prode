@@ -10,6 +10,7 @@
             <th scope="col">Equipo</th>
             <th scope="col"></th>
             <th scope="col">Equipo</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +22,7 @@
                     <td>{{$match->teamA->nameTeam}}</td>
                     <td>VS</td>
                     <td>{{$match->teamB->nameTeam}}</td>
+                    <td><a class="btn btn-primary" href="{{ route('match.edit', ['id' => $match->id]) }}" role="button">Editar</a></td>
                 </tr>
                 @endif
         @endforeach
