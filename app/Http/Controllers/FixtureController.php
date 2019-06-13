@@ -39,6 +39,10 @@ class FixtureController extends Controller
             $result = new Result();
             $result->id_match = $match->id;
             $result->id_fixture = $fixture->id;
+            $result->id_teamA = $match->teamA->id;
+            $result->id_teamB = $match->teamB->id;
+            $result->scoreA = 0;
+            $result->scoreB = 0;
             $result->save();
         }
 
