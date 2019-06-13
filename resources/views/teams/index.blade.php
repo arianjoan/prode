@@ -13,7 +13,7 @@
       <tr>
         <th scope="row">{{$team->id}}</th>
         <td>{{$team->nameTeam}}</td>
-        <td><a class="btn btn-primary" href="{{ route('team.edit', ['id' => $team->id]) }}" role="button">Editar</a></td>
+        <td><a class="btn btn-primary" href="{{ action('TeamController@edit', ['id' => $team->id]) }}" role="button">Editar</a></td>
       </tr>
     @endforeach
     </tbody>
