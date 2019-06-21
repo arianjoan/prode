@@ -40,17 +40,19 @@
             <th scope="col">Equipo</th>
             <th scope="col"></th>
             <th scope="col">Equipo</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
         @foreach($matches as $match)
             @if($match->name == "B")
                 <tr>
-                    <th scope="row">{{$match->id}}</th>
-                    <td>{{date("d/m/y",strtotime($match->dateMatch))}}</td>
-                    <td>{{$match->teamA->nameTeam}}</td>
-                    <td>VS</td>
-                    <td>{{$match->teamB->nameTeam}}</td>
+                  <th scope="row">{{$match->id}}</th>
+                  <td>{{date("d/m/y",strtotime($match->dateMatch))}}</td>
+                  <td>{{$match->teamA->nameTeam}}</td>
+                  <td>VS</td>
+                  <td>{{$match->teamB->nameTeam}}</td>
+                  <td><a class="btn btn-primary" href="{{ action('MatchController@edit', ['id' => $match->id]) }}" role="button">Editar</a></td>
                 </tr>
                 @endif
         @endforeach
@@ -69,17 +71,19 @@
             <th scope="col">Equipo</th>
             <th scope="col"></th>
             <th scope="col">Equipo</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
         @foreach($matches as $match)
             @if($match->name == "C")
                 <tr>
-                    <th scope="row">{{$match->id}}</th>
-                    <td>{{date("d/m/y",strtotime($match->dateMatch))}}</td>
-                    <td>{{$match->teamA->nameTeam}}</td>
-                    <td>VS</td>
-                    <td>{{$match->teamB->nameTeam}}</td>
+                  <th scope="row">{{$match->id}}</th>
+                  <td>{{date("d/m/y",strtotime($match->dateMatch))}}</td>
+                  <td>{{$match->teamA->nameTeam}}</td>
+                  <td>VS</td>
+                  <td>{{$match->teamB->nameTeam}}</td>
+                  <td><a class="btn btn-primary" href="{{ action('MatchController@edit', ['id' => $match->id]) }}" role="button">Editar</a></td>
                 </tr>
                 @endif
         @endforeach
