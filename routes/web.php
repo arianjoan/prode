@@ -20,6 +20,9 @@ Route::resource('team','TeamController');
 Route::resource('match','MatchController');
 Route::resource('fixture','FixtureController');
 
+Route::post('/result/updateAll', 'ResultController@updateAll');
+Route::resource('result', 'ResultController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
