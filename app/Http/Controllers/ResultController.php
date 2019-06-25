@@ -94,17 +94,20 @@ class ResultController extends Controller
 
         $i = 0;
 
-        $result = Result::find($id);
-        $result->update(["socreA", "scoreB"]);
+        // $result = Result::find($id);
+        // $result->update(["socreA", "scoreB"]);
 
         foreach ($request->all() as $result) {
             if($i != 0){
                 $resultFinded = Result::find($result["id"]);
-                $resultFinded->update(["socreA", "scoreB"]);
+                $resultFinded->scoreA = $result["scoreA"];
+                $resultFinded->scoreB = $result["scoreB"];
+                $resultFinded->save();
                 // dd($algo);
                 // echo("<br>");
                 // echo($algo["scoreA"]);
                 // echo($algo["scoreB"]);
+                //dd($resultFinded);
             }
             $i++;
         }

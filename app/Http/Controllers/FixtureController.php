@@ -17,11 +17,24 @@ class FixtureController extends Controller
     public function index()
     {
         $fixture = Fixture::idUser(auth()->user()->id)->get();
-        if (count($fixture) != 0){
+
+        if (count($fixture) != 0)
+        {            
             $fixture = auth()->user()->fixture;
             $results = Result::idFixture($fixture->first()->id)->get();
-            return view('fixtures.index', compact('results'));
-        }else{
+
+            $resultFirst = $results->first();
+            if($resultFirst->created_at == $resultFirst->updated_at)
+            {
+                return view('fixtures.index', compact('results'));
+            }
+            else 
+            {
+                return view('fixtures.fixSetted', compact('results'));
+            }
+        }
+        else
+        {
             $this->addFixture();
         }
         
@@ -48,6 +61,8 @@ class FixtureController extends Controller
         }
 
         $fixture->save();
+
+        return $this->index();
     }
 
     /**
