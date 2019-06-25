@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Result extends Model
 {
+    protected $fillable = ['scoreA', 'scoreB', 'id'];
+
     public function scopeIdFixture($query,$id)
     {
         return $query->where('id_fixture',$id);

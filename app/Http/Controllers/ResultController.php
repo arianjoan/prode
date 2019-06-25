@@ -14,7 +14,7 @@ class ResultController extends Controller
      */
     public function index()
     {
-        //
+        return view('prueba');
     }
 
     /**
@@ -81,5 +81,46 @@ class ResultController extends Controller
     public function destroy(Result $result)
     {
         //
+    }
+    
+    public function updateAll(Request $request)
+    {
+        // foreach ($results as $result) {
+        //     $result->update(request(['scoreA']));
+        //     $result->update(request(['scoreB']));
+        // }
+
+        //dd($request->result);
+
+        $i = 0;
+
+        // $result = Result::find($id);
+        // $result->update(["socreA", "scoreB"]);
+
+        foreach ($request->all() as $result) {
+            if($i != 0){
+                $resultFinded = Result::find($result["id"]);
+                $resultFinded->scoreA = $result["scoreA"];
+                $resultFinded->scoreB = $result["scoreB"];
+                $resultFinded->save();
+                // dd($algo);
+                // echo("<br>");
+                // echo($algo["scoreA"]);
+                // echo($algo["scoreB"]);
+                //dd($resultFinded);
+            }
+            $i++;
+        }
+
+
+        //$result = $request->result;
+
+        // foreach ($result as $r) {
+        //     echo("<br>");
+        //     echo($r["nombre"]);
+        //     echo($r["apellido"]);
+        // }
+
+        
     }
 }
