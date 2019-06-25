@@ -31,3 +31,5 @@ INSERT INTO MATCHES (ID_teamA,ID_teamB,created_at,updated_at,dateMatch,name) val
 (6,9,now(),now(),"2019-06-23 16:00:00","B"),
 (5,11,now(),now(),"2019-06-24 20:00:00","C"),
 (7,8,now(),now(),"2019-06-24 20:00:00","C");
+
+tener en cuenta al momento de verificar si los resultados estan updateados, que se haya modificado

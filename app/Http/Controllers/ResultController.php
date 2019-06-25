@@ -99,10 +99,11 @@ class ResultController extends Controller
 
         foreach ($request->all() as $result) {
             if($i != 0){
-                $resultFinded = Result::find($result["id"]);
-                $resultFinded->scoreA = $result["scoreA"];
-                $resultFinded->scoreB = $result["scoreB"];
-                $resultFinded->save();
+                $resultFound = Result::find($result["id"]);
+                $resultFound->scoreA = $result["scoreA"];
+                $resultFound->scoreB = $result["scoreB"];
+                $resultFound->touch();
+                $resultFound->save();
                 // dd($algo);
                 // echo("<br>");
                 // echo($algo["scoreA"]);
