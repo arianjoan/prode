@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Result extends Model
 {
+    public function scopeIdFixture($query,$id)
+    {
+        return $query->where('id_fixture',$id);
+    }
+
     public function match()
     {
         return $this->belongsTo(Match::class, 'id_match');
