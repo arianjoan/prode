@@ -19,7 +19,8 @@ class FixtureController extends Controller
         $fixture = Fixture::idUser(auth()->user()->id)->get();
         if (count($fixture) != 0){
             $fixture = auth()->user()->fixture;
-            return view('fixtures.index', compact('fixture'));
+            $results = Result::idFixture($fixture->first()->id)->get();
+            return view('fixtures.index', compact('results'));
         }else{
             $this->addFixture();
         }
