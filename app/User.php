@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Fixture::class, 'id_user');
     }
+
+    public function scopeEmailUser($query,$email)
+    {
+        return $query->where('email',$email);
+    }
 }

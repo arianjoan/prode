@@ -121,4 +121,26 @@ class FixtureController extends Controller
 
         return $this->index();
     }
+
+    public function calculateTotalScore(){
+        $fixture = auth()->user()->fixture;
+        $resultsSource = Result::idFixture($fixture->first()->id)->get();
+        $admin = User::emailUser("admin@admin.com")->get()->first();
+        $resultsOrigin = $admin->fixture->results;
+        $puntos = $this.calculateMatchScore($resultsSource,$resultOrigin);
+        return $puntos;
+    }
+
+    public function calculateMatchScore(Result $resultSource,Result $resultOriginal){
+        if ($resultSource->scoreA == $resultOriginal->scoreA && $resultSource->scoreB == $resultOriginal->scoreB){
+            return 3;
+        }else if (($resultSource->scoreA > $resultSource->scoreB && $resultOrigin->scoreA > $resultOrigin->scoreB) ||
+                  ($resultSource->scoreA < $resultSource->scoreB && $resultOrigin->scoreA < $resultOrigin->scoreB) ||
+                  ($resultSource->scoreA == $resultSource->scoreB && $resultOrigin->scoreA > $resultOrigin->scoreB)){
+            return 1;
+    }
+        else{
+            return 0;
+        }
+}
 }
