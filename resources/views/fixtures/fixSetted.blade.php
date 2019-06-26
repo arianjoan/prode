@@ -18,7 +18,7 @@
         <form action="result/updateAll" method="POST">
             @csrf
             <tbody>
-                @foreach($results as $result)
+                @foreach($fixture->first()->result as $result)
                     <tr>
                         <td>{{date("d/m/y",strtotime($result->match->dateMatch))}}</td>
                         <td>{{$result->match->teamA->nameTeam}}</td>
@@ -30,6 +30,7 @@
                 @endforeach
             </tbody>
         </table>
+    <h1>Puntos: {{$fixture->first()->score}}</h1>
     </form>
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Fixture as Fixture;
 use App\Match as Match;
 use App\Result as Result;
+use App\User as User;
 use Illuminate\Http\Request;
 
 class FixtureController extends Controller
@@ -24,13 +25,15 @@ class FixtureController extends Controller
             $results = Result::idFixture($fixture->first()->id)->get();
 
             $resultFirst = $results->first();
+            $fixture->first()->score = $this->calculateTotalScore();
             if($resultFirst->created_at == $resultFirst->updated_at)
             {
                 return view('fixtures.index', compact('results'));
             }
             else 
             {
-                return view('fixtures.fixSetted', compact('results'));
+                
+                return view('fixtures.fixSetted', compact('fixture'));
             }
         }
         else
@@ -141,21 +144,27 @@ class FixtureController extends Controller
         $fixture = auth()->user()->fixture;
         $resultsSource = Result::idFixture($fixture->first()->id)->get();
         $admin = User::emailUser("admin@admin.com")->get()->first();
-        $resultsOrigin = $admin->fixture->results;
-        $puntos = $this.calculateMatchScore($resultsSource,$resultOrigin);
+        $resultsOrigin = $admin->fixture->first()->result;
+        $puntos = $this->calculateMatchScore($resultsSource,$resultsOrigin);
         return $puntos;
     }
 
-    public function calculateMatchScore(Result $resultSource,Result $resultOriginal){
-        if ($resultSource->scoreA == $resultOriginal->scoreA && $resultSource->scoreB == $resultOriginal->scoreB){
-            return 3;
-        }else if (($resultSource->scoreA > $resultSource->scoreB && $resultOrigin->scoreA > $resultOrigin->scoreB) ||
-                  ($resultSource->scoreA < $resultSource->scoreB && $resultOrigin->scoreA < $resultOrigin->scoreB) ||
-                  ($resultSource->scoreA == $resultSource->scoreB && $resultOrigin->scoreA > $resultOrigin->scoreB)){
-            return 1;
-    }
-        else{
-            return 0;
+    public function calculateMatchScore($resultSource,$resultOriginal){
+        $puntos = 0;
+        if (count($resultSource) == count($resultOriginal)){
+            for($i=0;$i<count($resultSource);$i++){
+                if ($resultSource[$i]->scoreA == $resultOriginal[$i]->scoreA && $resultSource[$i]->scoreB == $resultOriginal[$i]->scoreB){
+                    $puntos = $puntos + 3;
+                }else if (($resultSource[$i]->scoreA > $resultSource[$i]->scoreB && $resultOriginal[$i]->scoreA > $resultOriginal[$i]->scoreB) ||
+                        ($resultSource[$i]->scoreA < $resultSource[$i]->scoreB && $resultOriginal[$i]->scoreA < $resultOriginal[$i]->scoreB) ||
+                        ($resultSource[$i]->scoreA == $resultSource[$i]->scoreB && $resultOriginal[$i]->scoreA == $resultOriginal[$i]->scoreB)){
+                    $puntos = $puntos + 1;
+                }
+                else{
+                    $puntos = $puntos + 0;
+                }
+            }    
         }
+        return $puntos;
 }
 }
