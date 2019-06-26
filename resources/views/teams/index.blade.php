@@ -13,7 +13,11 @@
       <tr>
         <th scope="row">{{$team->id}}</th>
         <td>{{$team->nameTeam}}</td>
+        @Auth
+        @if(Auth::user()->email == "admin@admin.com")
         <td><a class="btn btn-primary" href="{{ action('TeamController@edit', ['id' => $team->id]) }}" role="button">Editar</a></td>
+        @endif
+        @endAuth
       </tr>
     @endforeach
     </tbody>

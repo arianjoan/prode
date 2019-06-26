@@ -32,4 +32,4 @@ INSERT INTO MATCHES (ID_teamA,ID_teamB,created_at,updated_at,dateMatch,name) val
 (5,11,now(),now(),"2019-06-24 20:00:00","C"),
 (7,8,now(),now(),"2019-06-24 20:00:00","C");
 
-tener en cuenta al momento de verificar si los resultados estan updateados, que se haya modificado
+comprobar que un mail no admin, pueda pegar por get a un editar
